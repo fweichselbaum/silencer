@@ -2,6 +2,7 @@ out/
 target/
 .idea/
 .idea
+
 *.log
 *.env
 .env
