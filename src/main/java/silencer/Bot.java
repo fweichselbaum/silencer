@@ -1,5 +1,6 @@
 package silencer;
 
+import io.github.cdimascio.dotenv.Dotenv;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.requests.GatewayIntent;
@@ -15,7 +16,7 @@ public class Bot {
     // https://discord.com/api/oauth2/authorize?client_id=792052038610452531&permissions=8&scope=bot
 
     public static final String PREFIX = "°";
-    public static final String VERSION = "1.4";
+    public static final String VERSION = "1.4.1";
     public static final String ID = "792052038610452531";
     public static final String LOGGER_NAME = "inc.biedermann.silencer.logger";
 
@@ -28,7 +29,7 @@ public class Bot {
         logger.info("Startup");
 
         JDABuilder.createDefault(
-                        "", // TODO add Token
+                        Dotenv.load().get("JDA_TOKEN"),
                         //GatewayIntent.GUILD_MEMBERS,
                         GatewayIntent.GUILD_MESSAGES,
                         GatewayIntent.GUILD_VOICE_STATES)

@@ -47,9 +47,9 @@ public class PlayerManager {
             @Override
             public void trackLoaded(AudioTrack audioTrack) {
                 scheduler.queue(audioTrack);
-                channel.sendMessage("`" + audioTrack.getInfo().title +
+                channel.sendMessage("`" + audioTrack.getInfo().title + "` von `" + audioTrack.getInfo().author +
                         "` zur Warteschlange hinzugefügt").queue();
-                logger.info("Queue added: " + audioTrack.getInfo());
+                logger.info("Queue added: " + audioTrack.getInfo().title);
             }
 
             @Override
@@ -57,7 +57,7 @@ public class PlayerManager {
                 if (singleTrack) {
                     final AudioTrack firstTrack = audioPlaylist.getTracks().get(0);
                     scheduler.queue(firstTrack);
-                    channel.sendMessage("`" + firstTrack.getInfo().title +
+                    channel.sendMessage("`" + firstTrack.getInfo().title + "` von `" + firstTrack.getInfo().author +
                             "` zur Warteschlange hinzugefügt").queue();
                     logger.info("Queue added first track: " + firstTrack.getInfo());
                 } else {
